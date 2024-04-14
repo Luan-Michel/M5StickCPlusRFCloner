@@ -12,8 +12,8 @@ RFSignal received = {0,0,0,0};
 
 RCSwitch mySwitch = RCSwitch();
 
-#define RX_PIN 33
-#define TX_PIN 32
+#define RX_PIN 33 // HY2.0 PIN IN
+#define TX_PIN 32 // HY2.0 PIN OUT
 
 enum MenuOption {
   SEND,
@@ -138,7 +138,7 @@ void changeOption(MenuOption option) {
       M5.Lcd.setCursor(20, 20);
       M5.Lcd.setTextColor(TFT_WHITE);
       M5.Lcd.setTextSize(2);
-      M5.Lcd.println("Press A to send...");
+      M5.Lcd.println("Press BtnA to send...");
       delay(2000);
       break;
     case RECEIVE:
