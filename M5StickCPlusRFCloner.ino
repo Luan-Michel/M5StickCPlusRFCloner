@@ -24,7 +24,7 @@ bool inMenu = true;
 bool printedRF = true;
 
 
-MenuOption selectedOption = SEND; // Opção padrão inicial
+MenuOption selectedOption = SEND; // default Option
 
 void setup() {
   M5.begin();
@@ -32,7 +32,7 @@ void setup() {
   mySwitch.setPulseLength(488);
   mySwitch.setProtocol(6);
   mySwitch.enableTransmit(TX_PIN);
-  mySwitch.enableReceive(RX_PIN);  // Receiver on interrupt 0 => that is pin #2
+  mySwitch.enableReceive(RX_PIN);
 
   M5.Lcd.setRotation(1);
   M5.Lcd.fillScreen(TFT_BLACK);
@@ -46,7 +46,7 @@ void loop() {
     inMenu = true;
     changeSelection();
     displayMenu();
-    delay(300); // Delay para evitar seleção rápida
+    delay(300); // Delay to avoid over selection
   }
 
   if (inMenu && M5.BtnA.wasReleased()) {
@@ -79,11 +79,11 @@ void displayMenu() {
   M5.Lcd.setCursor(20, 20);
   M5.Lcd.setTextColor(TFT_WHITE);
   M5.Lcd.setTextSize(2);
-  M5.Lcd.println("Selecione:");
+  M5.Lcd.println("Select:");
   M5.Lcd.print(selectedOption == SEND ? "> " : "  ");
-  M5.Lcd.println("A. Enviar");
+  M5.Lcd.println("A. Send");
   M5.Lcd.print(selectedOption == RECEIVE ? "> " : "  ");
-  M5.Lcd.println("B. Receber");
+  M5.Lcd.println("B. Receive");
 }
 
 void changeSelection() {
@@ -139,7 +139,7 @@ void changeOption(MenuOption option) {
       M5.Lcd.setTextColor(TFT_WHITE);
       M5.Lcd.setTextSize(2);
       M5.Lcd.println("Press A to send...");
-      delay(2000); // Simulando envio, você pode substituir por sua lógica de envio
+      delay(2000);
       break;
     case RECEIVE:
       mySwitch.disableTransmit();
@@ -149,7 +149,7 @@ void changeOption(MenuOption option) {
       M5.Lcd.setCursor(20, 20);
       M5.Lcd.setTextColor(TFT_WHITE);
       M5.Lcd.setTextSize(2);
-      M5.Lcd.println("Recebendo...");
+      M5.Lcd.println("Receiving...");
       delay(2000);
       break;
   }
